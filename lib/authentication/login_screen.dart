@@ -1,11 +1,7 @@
-import 'package:bue/authentication/registration_screen.dart';
 import 'package:bue/home/home_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:google_sign_in/google_sign_in.dart';
 
-import '../firebase_options.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key, required this.title});
@@ -77,7 +73,7 @@ class _LoginScreenState extends State<LoginScreen> {
               TextFormField(
                 keyboardType: TextInputType.emailAddress,
                 decoration: const InputDecoration(
-                  labelText: "Enter your email",
+                  labelText: "Enter email",
                   hintText: "Email",
                   prefixIcon: Icon(Icons.email),
                   border: OutlineInputBorder(
@@ -154,7 +150,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     //     MaterialPageRoute(builder: (context) => HomeScreen()));
                   },
                   style: ElevatedButton.styleFrom(
-                    primary: Colors.redAccent,
+                    backgroundColor: Colors.redAccent,
                     padding: const EdgeInsets.all(16),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10),
