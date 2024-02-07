@@ -2,6 +2,7 @@ import 'package:bue/authentication/login_screen.dart';
 import 'package:bue/authentication/registration_screen.dart';
 import 'package:bue/basic_widgets/grid_view_screen.dart';
 import 'package:bue/bmi_calculator/bmi_calculator_screen.dart';
+import 'package:bue/chatapp/ui/chats_list_screen/chats_screen.dart';
 import 'package:bue/todolistapi/presentation/todolist_api_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -175,10 +176,10 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                   onPressed: () {
                     Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => HomeScreen()));
+                        MaterialPageRoute(builder: (context) => ChatScreen()));
                   },
                   child: const Text(
-                    "Basic Widget",
+                    "Chat Application",
                     style: TextStyle(color: Colors.white),
                   ),
                 ),
