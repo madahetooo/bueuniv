@@ -1,6 +1,7 @@
 import 'package:bue/home/home_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 
 class LoginScreen extends StatefulWidget {
@@ -103,51 +104,51 @@ class _LoginScreenState extends State<LoginScreen> {
                 width: 200,
                 child: ElevatedButton(
                   onPressed: () async {
-                    try {
-                      final String email = _emailController.text.trim();
-                      final String password = _passwordController.text.trim();
-                      if (email.isNotEmpty && password.isNotEmpty) {
-                        final UserCredential userCredential =
-                        await _auth.signInWithEmailAndPassword(
-                          email: email,
-                          password: password,
-                        );
-                        if (userCredential.user != null) {
-                          // Navigate to the home screen on successful login
-                          Navigator.pushReplacement(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => HomeScreen(),
-                            ),
-                          );
-                        }
-                      }
-                    } catch (e) {
-                      print("Error signing in: $e");
-                      // Handle login failure here
-                    }
-                    // final _googleSignIn = GoogleSignIn();
-                    // final _googleAccount = await _googleSignIn.signIn();
-                    // final _googleCredential =
-                    //     await _googleAccount!.authentication;
-                    //
-                    // final authCredentials = GoogleAuthProvider.credential(
-                    //     idToken: _googleCredential.idToken,
-                    //     accessToken: _googleCredential.accessToken);
-                    //
-                    // final firebaseUser = await FirebaseAuth.instance
-                    //     .signInWithCredential(authCredentials);
-                    //
-                    // print(firebaseUser.user!.displayName);
-                    // print(firebaseUser.user!.email);
-                    // print(firebaseUser.user!.phoneNumber);
-                    // print(firebaseUser.user!.photoURL);
-                    // print(firebaseUser.user!.emailVerified);
-                    // print(firebaseUser.user!.uid);
-                    // print(firebaseUser.user!.isAnonymous);
+                    // try {
+                    //   final String email = _emailController.text.trim();
+                    //   final String password = _passwordController.text.trim();
+                    //   if (email.isNotEmpty && password.isNotEmpty) {
+                    //     final UserCredential userCredential =
+                    //     await _auth.signInWithEmailAndPassword(
+                    //       email: email,
+                    //       password: password,
+                    //     );
+                    //     if (userCredential.user != null) {
+                    //       // Navigate to the home screen on successful login
+                    //       Navigator.pushReplacement(
+                    //         context,
+                    //         MaterialPageRoute(
+                    //           builder: (context) => HomeScreen(),
+                    //         ),
+                    //       );
+                    //     }
+                    //   }
+                    // } catch (e) {
+                    //   print("Error signing in: $e");
+                    //   // Handle login failure here
+                    // }
+                    final _googleSignIn = GoogleSignIn();
+                    final _googleAccount = await _googleSignIn.signIn();
+                    final _googleCredential =
+                        await _googleAccount!.authentication;
 
-                    // Navigator.push(context,
-                    //     MaterialPageRoute(builder: (context) => HomeScreen()));
+                    final authCredentials = GoogleAuthProvider.credential(
+                        idToken: _googleCredential.idToken,
+                        accessToken: _googleCredential.accessToken);
+
+                    final firebaseUser = await FirebaseAuth.instance
+                        .signInWithCredential(authCredentials);
+
+                    print(firebaseUser.user!.displayName);
+                    print(firebaseUser.user!.email);
+                    print(firebaseUser.user!.phoneNumber);
+                    print(firebaseUser.user!.photoURL);
+                    print(firebaseUser.user!.emailVerified);
+                    print(firebaseUser.user!.uid);
+                    print(firebaseUser.user!.isAnonymous);
+
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => HomeScreen()));
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.redAccent,
